@@ -17,7 +17,7 @@ const FakeData = [
         name: "Alice Johnson",
         username: "alicejohnson",
         age: 30,
-        nationality: "CANDA",
+        nationality: "CANADA",
     },  
     {
         id: 4,
