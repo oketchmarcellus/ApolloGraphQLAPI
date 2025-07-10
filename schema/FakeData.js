@@ -5,6 +5,20 @@ const FakeData = [
         username: "johndoe",
         age: 20,
         nationality: "USA",
+        friends: [
+            {
+                id: 2,
+                name: "Jane Smith",
+                username: "janesmith",
+                age: 25,
+            },
+            {
+                id: 3,
+                name: "Alice Johnson",
+                username: "alicejohnson",
+                age: 30,
+            },
+        ]
     },
     {   id: 2,                          
         name: "Jane Smith",
