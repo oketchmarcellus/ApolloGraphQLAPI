@@ -8,9 +8,18 @@ const typeDefs = `#graphql
     friends: [User]
   }
   
+  type Movie {
+    id: ID!
+    name: String!
+    yearofRelease: Int!
+    genre: String!
+    isInTheaters: Boolean!
+  }
   type Query {
     users: [User!]!
     user(id: ID!): User!
+    movies: [Movie!]!
+    movie(name: String!): Movie!
   }
   enum Nationality {
     KENYA
@@ -36,51 +45,6 @@ const typeDefs = `#graphql
     LIBYA
     SOUTH_SUDAN
     SOMALIA
-    SWITZERLAND
-    BELGIUM
-    AUSTRIA
-    DENMARK
-    FINLAND
-    IRELAND
-    PORTUGAL
-    GREECE
-    POLAND
-    CZECH_REPUBLIC
-    HUNGARY
-    SLOVAKIA
-    BULGARIA
-    ROMANIA
-    NORDIC_COUNTRIES
-    NORDIC_COUNTRIES_EXCEPT_FINLAND
-    CROATIA
-    SLOVENIA
-    LITHUANIA
-    SINGAPORE
-    LATVIA
-    ESTONIA
-    ICELAND
-    LUXEMBOURG
-    NORWAY
-    CANADA
-    USA
-    MEXICO
-    UK
-    FRANCE
-    GERMANY
-    ITALY
-    SPAIN
-    JAPAN
-    CHINA
-    INDIA
-    BRAZIL
-    AUSTRALIA
-    RUSSIA
-    SOUTH_AFRICA
-    ARGENTINA
-    SOUTH_KOREA
-    NETHERLANDS
-    SWEDEN
-    TURKEY
   }
 `;
 

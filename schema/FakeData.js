@@ -1,4 +1,4 @@
-const FakeData = [
+const UserList = [
     {
         id: 1,
         name: "John Doe",
@@ -50,4 +50,45 @@ const FakeData = [
     },
 ]
 
-export default FakeData;
+const MovieList = [
+    {
+        id: 1,
+        name: "Inception",
+        yearofRelease: 2010,
+        genre: "Science Fiction",
+        isInTheaters: false,
+    },
+    {
+        id: 2,
+        name: "The Matrix",
+        yearofRelease: 1999,
+        genre: "Action",
+        isInTheaters: false,
+    },
+    {
+        id: 3,
+        name: "Interstellar",
+        yearofRelease: 2014,
+        genre: "Science Fiction",
+        isInTheaters: false,
+    },
+    {
+        id: 4,
+        name: "Parasite",
+        yearofRelease: 2019,
+        genre: "Thriller",
+        isInTheaters: false,
+    },
+    {
+        id: 5,
+        name: "The Shawshank Redemption",
+        yearofRelease: 1994,
+        genre: "Drama",
+        isInTheaters: false,
+    },
+];
+
+
+// This file contains fake data for users and movies.
+// The UserList array contains user objects with properties like id, name, username, age,
+export { UserList, MovieList };
