@@ -4,8 +4,9 @@ const typeDefs = `#graphql
     name: String!
     username: String!
     age: Int!
-    nationality: Nationality!
+    nationality: Nationality
     friends: [User]
+    favouriteMovies: [Movie]
   }
   
   type Movie {
@@ -20,6 +21,24 @@ const typeDefs = `#graphql
     user(id: ID!): User!
     movies: [Movie!]!
     movie(name: String!): Movie!
+  }
+
+  input createUser{
+    name: String!
+    username: String!
+    age: Int
+    nationality: Nationality
+  }
+  input createMovie {
+    name: String!
+    yearofRelease: Int!
+    genre: String!
+    isInTheaters: Boolean!
+  }
+
+  type Mutation {
+    createUser(input: createUser): User!
+    createMovie(input : createMovie): Movie!
   }
   enum Nationality {
     KENYA
@@ -45,6 +64,7 @@ const typeDefs = `#graphql
     LIBYA
     SOUTH_SUDAN
     SOMALIA
+    BURUNDI
   }
 `;
 

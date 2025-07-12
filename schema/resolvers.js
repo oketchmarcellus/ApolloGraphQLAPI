@@ -28,7 +28,27 @@ const resolvers = {
         const movie = find(MovieList, { name });
         return movie;
       },
+  },
+  User: {
+      favouriteMovies(parent,args) {
+        const { name } = args;
+      //This function will be called when the favouriteMovies field is queried for a User
+      //It will return the movies that are in the user's favouriteMovies array
+        return favouriteMovies=find(MovieList,{ name });
+      }
     },
+  Mutation: {
+    //createUser mutation resolver
+    createUser(parent, args) {
+      const { input } = args; // Correctly destructure input
+      const newUser = {
+        id: UserList.length + 1,
+        ...input.user, // Spread the user object from input
+      };
+      UserList.push(newUser);
+      return newUser;
+    },
+  }
 };
 
 export default resolvers;

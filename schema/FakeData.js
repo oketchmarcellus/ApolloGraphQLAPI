@@ -4,7 +4,7 @@ const UserList = [
         name: "John Doe",
         username: "johndoe",
         age: 20,
-        nationality: "USA",
+        nationality: "BURUNDI",
         friends: [
             {
                 id: 2,
@@ -24,21 +24,21 @@ const UserList = [
         name: "Jane Smith",
         username: "janesmith",
         age: 25,
-        nationality: "UK",
+        nationality: "UGANDA",
     },
     {
         id: 3,
         name: "Alice Johnson",
         username: "alicejohnson",
         age: 30,
-        nationality: "CANADA",
+        nationality: "TANZANIA",
     },  
     {
         id: 4,
         name: "Bob Brown",
         username: "bobbrown",
         age: 22,
-        nationality: "AUSTRALIA",
+        nationality: "RWANDA",
 
     },
     {
