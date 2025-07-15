@@ -13,7 +13,10 @@ query GetAllUsers {
       age
     }
    }
-   movies {
+}
+
+query GetMovies{
+     movies {
       id
       name
       genre
@@ -21,6 +24,7 @@ query GetAllUsers {
       yearofRelease
    }
 }
+
 to comment several lines highlight then use ctrl + /
 query GetUser($userId: ID!){
   user(id: $userId) {

@@ -62,6 +62,15 @@ const resolvers = {
       }
       throw new Error('User not found');
     },
+    deleteUser(parent, args) {
+      const { id } = args; // Correctly destructure args
+      const userIndex = UserList.findIndex(user => user.id === Number(id));
+      if (userIndex !== -1) {
+        const deletedUser = UserList.splice(userIndex, 1)[0]; // Remove the user from the list
+        return deletedUser; // Return the deleted user
+      }
+      throw new Error('User not found');
+    }
   }
 };
 

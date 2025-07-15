@@ -47,6 +47,7 @@ const typeDefs = `#graphql
     updateUser(input: updateUser): User
     deleteUser(id: ID!): User
     createMovie(input : createMovie): Movie
+    deleteMovie(id: ID!): Movie
   }
   enum Nationality {
     KENYA
