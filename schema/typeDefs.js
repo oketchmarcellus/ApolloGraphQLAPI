@@ -29,16 +29,24 @@ const typeDefs = `#graphql
     age: Int
     nationality: Nationality
   }
+  input updateUser {
+    id: ID!
+    username: String!
+    age: Int
+    nationality: Nationality
+    name: String!
+  }
   input createMovie {
     name: String!
     yearofRelease: Int!
     genre: String!
     isInTheaters: Boolean!
   }
-
   type Mutation {
-    createUser(input: createUser): User!
-    createMovie(input : createMovie): Movie!
+    createUser(input: createUser): User
+    updateUser(input: updateUser): User
+    deleteUser(id: ID!): User
+    createMovie(input : createMovie): Movie
   }
   enum Nationality {
     KENYA

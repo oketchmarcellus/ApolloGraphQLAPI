@@ -1,0 +1,98 @@
+List of operations you can try out.
+
+
+query GetAllUsers {
+   users {
+    id
+    name
+    age
+    username
+    nationality
+    friends {
+      name
+      age
+    }
+   }
+   movies {
+      id
+      name
+      genre
+      isInTheaters
+      yearofRelease
+   }
+}
+to comment several lines highlight then use ctrl + /
+query GetUser($userId: ID!){
+  user(id: $userId) {
+    id
+    name
+    username
+    age
+    nationality
+    friends {
+      id
+      name
+    }
+    favouriteMovies {
+      name
+      yearofRelease
+      genre
+      isInTheaters
+    }
+ },
+}
+
+query GetAllMovies {
+ movies {
+   id
+   name
+   yearofRelease
+   genre
+   isInTheaters
+ }
+}
+
+query GetMovie($MovieName: String!) {
+	movie(name: $MovieName) {
+		name
+	}
+}
+mutation CreateUser($createUserInput: createUser!) {
+  createUser(input: $createUserInput) {
+    id
+    name
+    username
+    age
+    nationality
+  }
+}
+mutation UpdateUser($updateUserInput: updateUser!) {
+  updateUser(input: $updateUserInput) {
+     name
+     username
+     age
+     nationality
+    } 
+  }
+}
+
+Variables:
+
+{
+  "createUserInput": {
+    "name": "Zakia Rwanda",
+    "age": 30,
+    "nationality": "RWANDA",
+    "username": "Zakiah"
+    }
+  }
+}
+
+{
+  "updateUserInput":{
+    "id":6,
+    "name":"Dee Namakula",
+    "username":"Dee",
+    "age":27
+  }
+}

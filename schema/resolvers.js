@@ -1,52 +1,66 @@
-import {UserList, MovieList} from './FakeData.js';//import data into resolvers
-import finder from 'lodash';//import arraymanager from lodash to use its find function
-// lodash is a utility library that provides many useful functions for working with arrays, objects, and other data types.
-// In this case, we are using the find function to search for a user by their id  
+import pkg from 'lodash'; // Import the entire lodash package
+const { find } = pkg; // Destructure the find function from lodash
+import { UserList, MovieList } from './FakeData.js'; // Import data into resolvers
 
-const { find } = finder;//Destructure the find function from lodash
-//create a resolver for the Query type in GraphQL schema
-//The resolvers object contains functions that resolve the data for each field in the schema
+// Create a resolver for the Query type in GraphQL schema
 const resolvers = {
   Query: {
-    //user resolvers
-    //These functions will be called when the corresponding fields are queried in a GraphQL request 
+    // User resolvers
     users() {
       return UserList;
     },
     user(parent, args) {
-      const { id } = args;//Correctly destructure args
+      const { id } = args; // Correctly destructure args
       const user = find(UserList, { id: Number(id) });
-      return user;
+      return user || null; // Return null if user not found
     },
-    //movie resolvers
-    //These functions will be called when the corresponding fields are queried in a GraphQL request
+    
+    // Movie resolvers
     movies() {
       return MovieList;
     },
-    movie (parent, args) {
-        const { name } = args; // Correctly destructure args
-        const movie = find(MovieList, { name });
-        return movie;
-      },
-  },
-  User: {
-      favouriteMovies(parent,args) {
-        const { name } = args;
-      //This function will be called when the favouriteMovies field is queried for a User
-      //It will return the movies that are in the user's favouriteMovies array
-        return favouriteMovies=find(MovieList,{ name });
-      }
+    movie(parent, args) {
+      const { name } = args; // Correctly destructure args
+      const movie = find(MovieList, { name });
+      return movie || null; // Return null if movie not found
     },
+  },
+  
+  User: {
+    favouriteMovies(parent) {
+      // Return the movies that are in the user's favouriteMovies array
+      //return parent.favouriteMovies.map(movieId => find(MovieList, { id: movieId })) || [];
+    }
+  },
+
   Mutation: {
-    //createUser mutation resolver
+    // CreateUser mutation resolver
     createUser(parent, args) {
       const { input } = args; // Correctly destructure input
       const newUser = {
         id: UserList.length + 1,
-        ...input.user, // Spread the user object from input
+        name: input.name, // Ensure this is set correctly
+        username: input.username,
+        age: input.age,
+        nationality: input.nationality,
+        favouriteMovies: [] // Initialize favouriteMovies as an empty array
       };
       UserList.push(newUser);
       return newUser;
+    },
+
+    // UpdateUser mutation resolver
+    updateUser(parent, args) {
+      const { input } = args; // Correctly destructure input
+      const updateUserDetails = find(UserList, { id: Number(input.id) });
+      if (updateUserDetails) {
+        // updateUserDetails.username = input.username; // Update the username
+        // updateUserDetails.name = input.name; // Update the name
+        updateUserDetails.age = input.age; // Update the age if provided
+        // updateUserDetails.nationality = input.nationality; // Update nationality
+        return updateUserDetails;
+      }
+      throw new Error('User not found');
     },
   }
 };
